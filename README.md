@@ -63,9 +63,9 @@ GET /api/orders/{id}
 ```
 
 #### Buscar Entregas
-````http
+```http
 GET /deliveries
-````
+```
 
 Resposta (`200 OK`)
 ``json
