@@ -67,24 +67,6 @@ GET /api/orders/{id}
 GET /deliveries
 ```
 
-Resposta (`200 OK`)
-``json
-[
-    {
-        "id": 1,
-        "orderId": 1,
-        "deliveryAddress": "Rua das Palmeiras, 357",
-        "processedAt": "2026-06-03T18:52:59.226424"
-    },
-    {
-        "id": 2,
-        "orderId": 2,
-        "deliveryAddress": "Rua das Filipinas, 300",
-        "processedAt": "2026-06-03T18:53:24.233678"
-    }
-]
-```
-
 #### Health check
 ```http
 GET /actuator/health
