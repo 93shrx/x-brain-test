@@ -114,8 +114,10 @@ O console do H2 fica disponível em `http://localhost:8080/h2-console` com a JDB
 A pipeline GitHub Actions executa em todo push e pull request para `main`:
 
 - Build Maven (`mvn clean verify`)
-- Testes automatizados
+- Testes automatizados com RabbitMQ real (service container)
 - Validação do Dockerfile
+
+Um container RabbitMQ é levantado automaticamente no CI antes dos testes, garantindo que o contexto da aplicação sobe e conecta corretamente à fila.
 
 ### Diferenciais implementados
 
@@ -244,8 +246,10 @@ The H2 console is available at `http://localhost:8080/h2-console` using the JDBC
 The GitHub Actions pipeline runs on every push and pull request to `main`:
 
 - Maven build (`mvn clean verify`)
-- Automated tests
+- Automated tests with a real RabbitMQ service container
 - Dockerfile validation
+
+A RabbitMQ container is automatically started in CI before the tests run, ensuring the application context loads and connects to the queue correctly.
 
 ### Implemented extras
 
