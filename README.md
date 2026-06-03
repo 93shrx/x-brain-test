@@ -24,9 +24,10 @@ docker compose up --build
 
 O projeto utiliza Spring Boot 4.x e H2 Database.
 
-Devido a uma incompatibilidade conhecida entre Spring Boot 4.x e o H2 Console, a interface web do H2 pode não estar disponível.
-
-A persistência pode ser validada normalmente através dos endpoints da API e dos logs SQL gerados pelo Hibernate.
+Devido a uma incompatibilidade conhecida entre Spring Boot 4.x e o H2 Console, a interface web do 
+H2 pode não estar disponível, porém embora o teste exija apenas a persistência da entidade Entrega
+após o consumo da fila, foi adicionado um endpoint de consulta (GET /deliveries) para facilitar a validação
+do fluxo assíncrono durante a avaliação do projeto.
 
 ### Endpoints
 
@@ -59,6 +60,29 @@ Resposta (`201 Created`):
 #### Buscar pedido
 ```http
 GET /api/orders/{id}
+```
+
+#### Buscar Entregas
+````http
+GET /deliveries
+````
+
+Resposta (`200 OK`)
+``json
+[
+    {
+        "id": 1,
+        "orderId": 1,
+        "deliveryAddress": "Rua das Palmeiras, 357",
+        "processedAt": "2026-06-03T18:52:59.226424"
+    },
+    {
+        "id": 2,
+        "orderId": 2,
+        "deliveryAddress": "Rua das Filipinas, 300",
+        "processedAt": "2026-06-03T18:53:24.233678"
+    }
+]
 ```
 
 #### Health check
