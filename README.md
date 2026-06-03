@@ -20,6 +20,14 @@ docker compose up --build
 - RabbitMQ Management: `http://localhost:15672` (usuário: `guest` / senha: `guest`)
 - H2 Console: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:xbraindb`)
 
+## Observação
+
+O projeto utiliza Spring Boot 4.x e H2 Database.
+
+Devido a uma incompatibilidade conhecida entre Spring Boot 4.x e o H2 Console, a interface web do H2 pode não estar disponível.
+
+A persistência pode ser validada normalmente através dos endpoints da API e dos logs SQL gerados pelo Hibernate.
+
 ### Endpoints
 
 #### Criar pedido
