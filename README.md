@@ -24,10 +24,18 @@ docker compose up --build
 
 O projeto utiliza Spring Boot 4.x e H2 Database.
 
-Devido a uma incompatibilidade conhecida entre Spring Boot 4.x e o H2 Console, a interface web do 
-H2 pode não estar disponível, porém embora o teste exija apenas a persistência da entidade Entrega
-após o consumo da fila, foi adicionado um endpoint de consulta (GET /deliveries) para facilitar a validação
-do fluxo assíncrono durante a avaliação do projeto.
+### H2 Console
+
+Durante o desenvolvimento foi identificada uma incompatibilidade entre o Spring Boot 4.x e a configuração padrão do H2 Console. Embora a persistência dos dados estivesse funcionando corretamente, a interface web do H2 não ficava disponível.
+
+Após investigar e pesquisar na documentação e na comunidade, encontrei uma solução compatível com o Spring Boot 4.x baseada no artigo abaixo:
+
+https://medium.com/@raushan1156/h2-console-not-working-in-spring-boot-4-0-0-7873e20c82d5
+
+Com o ajuste das dependências do projeto, o H2 Console passou a funcionar normalmente.
+
+Além disso, foi disponibilizado o endpoint `GET /deliveries`, que permite consultar as entregas processadas pelo consumidor RabbitMQ. Embora não fosse um requisito explícito do desafio, ele facilita a validação do fluxo assíncrono e a verificação dos registros persistidos na entidade `Delivery`.
+
 
 ### Endpoints
 
