@@ -19,6 +19,8 @@ docker compose up --build
 - API: `http://localhost:8080`
 - RabbitMQ Management: `http://localhost:15672` (usuário: `guest` / senha: `guest`)
 - H2 Console: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:xbraindb`)
+- Swagger UI: `http://localhost:8080/swagger-ui/index.html`
+- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
 
 ## Observação
 
@@ -79,6 +81,15 @@ GET /deliveries
 ```http
 GET /actuator/health
 ```
+
+### Documentação da API
+
+A API possui documentação interativa gerada automaticamente com OpenAPI/Swagger.
+
+- Swagger UI: `http://localhost:8080/swagger-ui/index.html`
+- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
+
+Através do Swagger é possível visualizar os contratos da API, exemplos de payloads e executar requisições diretamente pelo navegador.
 
 ### Arquitetura
 
@@ -147,6 +158,7 @@ Um container RabbitMQ é levantado automaticamente no CI antes dos testes, garan
 - Spring Boot Actuator expondo `health`, `info` e `metrics`
 - Logging estruturado com SLF4J em todas as camadas
 - Tratamento de erros centralizado com `@RestControllerAdvice`
+- Documentação interativa da API com OpenAPI/Swagger
 
 ### O que faria com mais tempo
 
@@ -155,7 +167,6 @@ Um container RabbitMQ é levantado automaticamente no CI antes dos testes, garan
 - **Endpoint de busca com Elasticsearch** conforme diferencial do desafio
 - **Flyway** para versionamento de migrações de banco
 - **Retry no consumidor** com `@Retryable` para falhas transitórias
-- **OpenAPI/Swagger** para documentação interativa da API
 - **Publisher Confirms** do RabbitMQ para garantia de entrega na publicação
 
 ---
